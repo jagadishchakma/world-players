@@ -2,3 +2,21 @@
     margin: 50px auto;
     width: 500px;
 }
+
+footer{
+    background-color:rgb(209, 211, 213);
+    padding: 50px;
+}
+.footer{
+    width: 500px;
+    margin: auto;
+    text-align: center
+}
+
+
+.radio-canada-big-main {
+  font-family: "Radio Canada Big", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}

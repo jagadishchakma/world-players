@@ -1,46 +1,50 @@
 // load default show data
+function defaultPlayers(){
+  
+    fetch("https://www.thesportsdb.com/api/v1/json/3/searchplayers.php?t=Arsenal")
+        .then(res => res.json())
+        .then(data => {
 
-fetch("https://www.thesportsdb.com/api/v1/json/3/searchplayers.php?t=Arsenal")
-    .then(res => res.json())
-    .then(data => {
-
-        let div = document.querySelector(".players");
-        data.player.map((player)=>{
-            div.insertAdjacentHTML('beforeend',`
-            <div class="col-md-4 mb-3">
-                <div class="card" style="width: 18rem;">
-                    <img src="${player.strThumb}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">${player.strPlayer}</h5>
-                        <p class="card-text">
-                            <strong>Nationality:</strong> ${player.strNationality
-                            }
-                            <br>
-                            <strong>Gender: </strong> ${player.strGender}
-                            <br>
-                            <strong>Weight: </strong>${player.strWeight}
-                            <br>
-                            <strong>Position: </strong> ${player.strPosition}
-                            <br>
-                            <strong>Id: </strong>${player.idPlayer}
-                            <br>
-                            <strong>Description: </strong>${player.strDescriptionEN.slice(0,100)}...
-                            <br>
-                            
-                            <a href="https://${player.strInstagram}" target="_blank"><i class="fa fa-instagram"></i></a>
-                            <a href="https://${player.strFacebook}" class="ms-2" target="_blank"><i class="fa fa-facebook"></i></a>
-                            <a href="htps://${player.strTwitter}" class="ms-2" target="_blank"><i class="fa fa-twitter"></i></a>
-                        </p>
-                    </div>
-                    <div class="card-footer">
-                        <button class="btn btn-primary float-left" onclick="addToPlayer(this,'${player.strPlayer}')">Add to group</button>
-                        <button class="btn btn-warning float-right" data-bs-toggle="modal" data-bs-target="#details" onclick="playerDetails(${player.idPlayer})">Details</button>
+            let div = document.querySelector(".players");
+            data.player.map((player)=>{
+                div.insertAdjacentHTML('beforeend',`
+                <div class="col-md-4 mb-3">
+                    <div class="card" style="width: 18rem;">
+                        <img src="${player.strThumb}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">${player.strPlayer}</h5>
+                            <p class="card-text">
+                                <strong>Nationality:</strong> ${player.strNationality
+                                }
+                                <br>
+                                <strong>Gender: </strong> ${player.strGender}
+                                <br>
+                                <strong>Weight: </strong>${player.strWeight}
+                                <br>
+                                <strong>Position: </strong> ${player.strPosition}
+                                <br>
+                                <strong>Id: </strong>${player.idPlayer}
+                                <br>
+                                <strong>Description: </strong>${player.strDescriptionEN.slice(0,100)}...
+                                <br>
+                                
+                                <a href="https://${player.strInstagram}" target="_blank"><i class="fa fa-instagram"></i></a>
+                                <a href="https://${player.strFacebook}" class="ms-2" target="_blank"><i class="fa fa-facebook"></i></a>
+                                <a href="htps://${player.strTwitter}" class="ms-2" target="_blank"><i class="fa fa-twitter"></i></a>
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-primary float-left" onclick="addToPlayer(this,'${player.strPlayer}')">Add to group</button>
+                            <button class="btn btn-warning float-right" data-bs-toggle="modal" data-bs-target="#details" onclick="playerDetails(${player.idPlayer})">Details</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-            `)
+                `)
+            })
         })
-    })
+    
+    }
+defaultPlayers();
 
 
 // add to player 
@@ -108,7 +112,7 @@ search.addEventListener("keyup", (event)=>{
                                 </div>
                                 <div class="card-footer">
                                     <button class="btn btn-primary float-left" onclick="addToPlayer(this,'${player.strPlayer}')">Add to group</button>
-                                    <button class="btn btn-warning float-right">Details</button>
+                                    <button class="btn btn-warning float-right" data-bs-toggle="modal" data-bs-target="#details" onclick="playerDetails(${player.idPlayer})">Details</button>
                                 </div>
                             </div>
                         </div>
